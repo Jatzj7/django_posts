@@ -44,3 +44,8 @@ def post_update(request, id):
         "form_type": 'Upadte'
     }
     return render(request, "post_create.html", context)
+
+def post_delete(request,id):
+    post = Post.objects.get(id = id)
+    post.delete()
+    return HttpResponseRedirect('/posts')
