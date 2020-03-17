@@ -1,8 +1,8 @@
-<h1>Post creation Page</h1>
+<h1>Post {{ form_type}} Page</h1>
 
 <form method="POST" action=".">
   {% csrf_token %} {{form.as_p}}
   <button type="submit">
-    Create Post
+    {{ form_type}} Post
   </button>
 </form>

@@ -26,6 +26,21 @@ def post_create(request):
         return HttpResponseRedirect('/posts')
 
     context = {
-        "form": form
+        "form": form,
+        "form_type": 'create'
+    }
+    return render(request, "post_create.html", context)
+
+
+def post_update(request, id):
+    post = Post.objects.get(id=id)
+    form = postForm(request.POST or None, instance=post)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/posts')
+
+    context = {
+        "form": form,
+        "form_type": 'Upadte'
     }
     return render(request, "post_create.html", context)
